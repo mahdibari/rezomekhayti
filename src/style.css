@@ -138,7 +138,8 @@ nav .nav-links li a:hover::after {
 
 /* --- Hero Section --- */
 #hero {
-    height: 100vh;
+    /* height: 100vh; */ /* این خط را غیرفعال یا حذف کنید */
+    height: 100dvh;   /* این خط جدید را اضافه کنید (تغییر اصلی اینجاست) */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://dwevrqyekxjbgiwrvcty.supabase.co/storage/v1/object/public/my/1756425037.png') no-repeat center center/cover;
     display: flex;
     justify-content: center;

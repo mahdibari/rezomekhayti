@@ -30,3 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
 });
+
+function setHeroHeight() {
+    const hero = document.getElementById('hero');
+    if (hero) {
+        hero.style.height = `${window.innerHeight}px`;
+    }
+}
+window.addEventListener('load', setHeroHeight);
+window.addEventListener('resize', setHeroHeight);
