@@ -89,16 +89,17 @@ nav .logo {
     text-decoration: none;
 }
 
-nav ul {
+/* نام کلاس به nav-links تغییر کرد */
+nav .nav-links {
     list-style: none;
     display: flex;
 }
 
-nav ul li {
+nav .nav-links li {
     margin-right: 25px;
 }
 
-nav ul li a {
+nav .nav-links li a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 700;
@@ -107,11 +108,11 @@ nav ul li a {
     padding-bottom: 5px;
 }
 
-nav ul li a:hover {
+nav .nav-links li a:hover {
     color: var(--primary-color);
 }
 
-nav ul li a::after {
+nav .nav-links li a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -122,15 +123,22 @@ nav ul li a::after {
     transition: width 0.3s;
 }
 
-nav ul li a:hover::after {
+nav .nav-links li a:hover::after {
     width: 100%;
+}
+
+/* استایل آیکون همبرگر (در دسکتاپ مخفی است) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--primary-color);
 }
 
 
 /* --- Hero Section --- */
 #hero {
     height: 100vh;
-    /* You may want to choose a new darker background image */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://dwevrqyekxjbgiwrvcty.supabase.co/storage/v1/object/public/my/1756425037.png') no-repeat center center/cover;
     display: flex;
     justify-content: center;
@@ -344,17 +352,79 @@ footer {
     visibility: visible;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    nav ul {
-        display: none; /* Simple hiding for demo, can be replaced with a hamburger menu */
+/*
+========================================
+--- Media Queries for Responsiveness ---
+========================================
+*/
+
+/* --- برای تبلت‌ها (تا 992 پیکسل) --- */
+@media (max-width: 992px) {
+    .container {
+        padding: 3rem 1.5rem;
     }
 
-    .about-content {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+}
+
+
+/* --- برای موبایل (تا 768 پیکسل) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* نمایش آیکون همبرگر */
+        z-index: 1002; /* بالاتر از بقیه آیتم‌های nav */
+    }
+
+    nav .nav-links {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background-color: var(--card-bg-color);
+        position: fixed;
+        top: 0;
+        right: -100%; /* در ابتدا خارج از صفحه */
+        width: 100%;
+        height: 100vh;
+        transition: right 0.5s ease-in-out;
+        z-index: 1001;
+    }
+
+    nav .nav-links.active {
+        right: 0; /* با کلیک، از سمت راست وارد صفحه می‌شود */
+    }
+
+    nav .nav-links li {
+        margin: 0;
+    }
+    
+    nav .nav-links li a {
+        font-size: 1.5rem; /* بزرگتر کردن فونت در منوی موبایل */
     }
 
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .about-image img {
+        max-width: 300px;
+        margin: 0 auto;
     }
 }
